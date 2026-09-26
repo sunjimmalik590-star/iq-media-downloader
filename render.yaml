@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: iq-media-download-worker
+    runtime: docker
+    dockerfilePath: ./worker/Dockerfile
+    dockerContext: .
+    plan: free
+    healthCheckPath: /health
+    numInstances: 1
+    envVars:
+      - key: DOWNLOAD_WORKER_SECRET
+        sync: false
+      - key: PUBLIC_WORKER_URL
+        sync: false
+      - key: CALLBACK_BASE_URL
+        sync: false
+      - key: MAX_CONCURRENT_JOBS
+        value: "5"
+      - key: MAX_QUEUED_JOBS
+        value: "20"
+      - key: MAX_FILE_SIZE
+        value: "47185920"
+      - key: DOWNLOAD_TIMEOUT_MS
+        value: "300000"
+      - key: TEMP_FILE_TTL
+        value: "900"
+      - key: PORT
+        value: "10000"

@@ -1,0 +1,20 @@
+
+> iq-media-downloader@0.1.0 test:runtime
+> node --test tests/runtime.test.mjs
+
+▶ real workerd: database migration, authenticated webhook, dedupe, signed callback, streaming
+  ✔ real D1 migration creates domain tables (11.195088ms)
+  ✔ webhook invalid secret returns 403 (13.623248ms)
+  ✔ valid duplicate update writes exactly one inbox row (16.718261ms)
+  ✔ signed unknown callback safely returns success without job mutation (12.744252ms)
+  ✔ FixedLengthStream multipart works inside workerd (MOCK Telegram HTTP) (3.415186ms)
+✔ real workerd: database migration, authenticated webhook, dedupe, signed callback, streaming (3629.600047ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9174.324182
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

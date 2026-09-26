@@ -1,0 +1,26 @@
+{
+  "name": "iq-media-downloader",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:worker": ".venv/bin/python -m pytest tests/worker -q",
+    "test:runtime": "node --test tests/runtime.test.mjs",
+    "build": "tsc --noEmit && wrangler deploy --dry-run --config cloudflare/wrangler.toml --outdir dist",
+    "dev": "wrangler dev --config cloudflare/wrangler.toml",
+    "deploy": "wrangler deploy --config cloudflare/wrangler.toml",
+    "db:local": "wrangler d1 migrations apply iq-media-downloader --local --config cloudflare/wrangler.toml",
+    "db:remote": "wrangler d1 migrations apply iq-media-downloader --remote --config cloudflare/wrangler.toml"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.1",
+    "miniflare": "5.20260925.0-alpha",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.0.0"
+  }
+}

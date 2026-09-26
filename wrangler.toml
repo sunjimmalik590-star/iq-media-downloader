@@ -1,0 +1,43 @@
+name = "iq-media-downloader"
+main = "src/index.ts"
+compatibility_date = "2026-09-26"
+workers_dev = true
+
+[vars]
+APP_BASE_URL = "https://iq-media-downloader.YOUR-SUBDOMAIN.workers.dev"
+DOWNLOAD_WORKER_URL = "https://YOUR-IQ-WORKER.onrender.com"
+ADMIN_TELEGRAM_IDS = ""
+REQUESTS_PER_MINUTE = "5"
+FAILURE_THRESHOLD = "3"
+FAILURE_WINDOW_SECONDS = "600"
+COOLDOWN_SECONDS = "300"
+GLOBAL_ACTIVE_JOBS = "20"
+MAX_FILE_SIZE = "47185920"
+DOWNLOAD_TIMEOUT_MS = "300000"
+JOB_TTL_SECONDS = "1800"
+UPDATE_TTL_SECONDS = "604800"
+BROADCAST_BATCH_SIZE = "20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "iq-media-downloader"
+database_id = "00000000-0000-0000-0000-000000000000" # REPLACE with the NEW database ID
+migrations_dir = "migrations"
+
+[[queues.producers]]
+binding = "EVENTS"
+queue = "iq-media-events"
+
+[[queues.consumers]]
+queue = "iq-media-events"
+max_batch_size = 1
+max_batch_timeout = 1
+max_retries = 3
+max_concurrency = 5
+dead_letter_queue = "iq-media-dead-letter"
+
+[triggers]
+crons = ["* * * * *"]
+
+[observability]
+enabled = false # Do not enable raw request/access logging of tokens or media URLs.

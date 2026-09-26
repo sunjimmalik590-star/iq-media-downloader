@@ -1,0 +1,31 @@
+
+> iq-media-downloader@0.1.0 build
+> tsc --noEmit && wrangler deploy --dry-run --config cloudflare/wrangler.toml --outdir dist
+
+
+ ⛅️ wrangler 4.141.0
+────────────────────
+Total Upload: 53.25 KiB / gzip: 14.66 KiB
+Your Worker has access to the following bindings:
+Binding                                                                      Resource                  
+env.EVENTS (iq-media-events)                                                 Queue                     
+env.DB (iq-media-downloader)                                                 D1 Database               
+env.APP_BASE_URL ("https://iq-media-downloader.YOUR-SUBD...")                Environment Variable      
+env.DOWNLOAD_WORKER_URL ("https://YOUR-IQ-WORKER.onrender.com")              Environment Variable      
+env.ADMIN_TELEGRAM_IDS ("")                                                  Environment Variable      
+env.REQUESTS_PER_MINUTE ("5")                                                Environment Variable      
+env.FAILURE_THRESHOLD ("3")                                                  Environment Variable      
+env.FAILURE_WINDOW_SECONDS ("600")                                           Environment Variable      
+env.COOLDOWN_SECONDS ("300")                                                 Environment Variable      
+env.GLOBAL_ACTIVE_JOBS ("20")                                                Environment Variable      
+env.MAX_FILE_SIZE ("47185920")                                               Environment Variable      
+env.DOWNLOAD_TIMEOUT_MS ("300000")                                           Environment Variable      
+env.JOB_TTL_SECONDS ("1800")                                                 Environment Variable      
+env.UPDATE_TTL_SECONDS ("604800")                                            Environment Variable      
+env.BROADCAST_BATCH_SIZE ("20")                                              Environment Variable      
+
+--dry-run: exiting now.
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+▲ [WARNING] Proxy environment variables detected. We'll use your proxy for fetch requests.
+
+
